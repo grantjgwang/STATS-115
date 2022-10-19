@@ -1,5 +1,3 @@
-from cmath import sqrt
-from urllib.parse import _NetlocResultMixinStr
 import numpy as np
 import matplotlib.pyplot as plt
 import math
@@ -49,9 +47,9 @@ def upperConfidenceBound(Q, N, c):
     for key, reward in Q.items():
         t += 1
         if N[key] > 0:
-            curr_reward = reward + c*sqrt(math.log(t)/N[key])
+            curr_reward = reward + c*math.sqrt(math.log(t)/N[key])
         else:
-            curr_reward = reward + c*sqrt(math.log(t)/t-1)
+            curr_reward = reward + c*math.sqrt(math.log(t)/(t-1))
         if max_reward is None or curr_reward > max_reward:
             max_reward = curr_reward
             action = key
